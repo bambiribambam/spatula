@@ -1,8 +1,9 @@
 {
-  "name": "discord-clone",
+  "name": "Spatula",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"node backend/server.js\" \"vite\""
+    "start": "node server.js",
+    "dev": "concurrently \"node server.js\" \"vite\""
   },
   "dependencies": {
     "bcrypt": "^5",
