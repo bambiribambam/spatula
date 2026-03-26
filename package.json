@@ -1,0 +1,19 @@
+{
+  "name": "discord-clone",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"node backend/server.js\" \"vite\""
+  },
+  "dependencies": {
+    "bcrypt": "^5",
+    "concurrently": "^8",
+    "cors": "^2",
+    "express": "^4",
+    "jsonwebtoken": "^9",
+    "mongoose": "^7",
+    "socket.io": "^4",
+    "socket.io-client": "^4",
+    "simple-peer": "^9",
+    "zustand": "^4"
+  }
+}

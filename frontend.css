@@ -1,0 +1,6 @@
+body { margin:0; font-family:sans-serif; }
+.app { display:flex; height:100vh; }
+.sidebar { width:80px; background:#1e1f22; }
+.channels { width:200px; background:#2b2d31; color:white; padding:10px; }
+.chat { flex:1; background:#313338; color:white; display:flex; flex-direction:column; }
+.messages { flex:1; overflow:auto; padding:10px; }

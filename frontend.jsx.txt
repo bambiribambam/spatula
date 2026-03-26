@@ -1,0 +1,48 @@
+import { useState, useEffect } from "react";
+import io from "socket.io-client";
+
+const socket = io("http://localhost:5000", {
+  auth: { token: localStorage.getItem("token") }
+});
+
+export default function App() {
+  const [messages, setMessages] = useState([]);
+  const [text, setText] = useState("");
+  const channel = "general";
+
+  useEffect(() => {
+    socket.emit("join", channel);
+
+    socket.on("message", m => {
+      setMessages(prev => [...prev, m]);
+    });
+
+    return () => socket.off("message");
+  }, []);
+
+  const send = () => {
+    socket.emit("message", { text, channelId: channel });
+    setText("");
+  };
+
+  return (
+    <div className="app">
+      <div className="sidebar">Servers</div>
+
+      <div className="channels"># general</div>
+
+      <div className="chat">
+        <div className="messages">
+          {messages.map((m, i) => (
+            <div key={i}>
+              <b>{m.user.username}</b>: {m.text}
+            </div>
+          ))}
+        </div>
+
+        <input value={text} onChange={e => setText(e.target.value)} />
+        <button onClick={send}>Send</button>
+      </div>
+    </div>
+  );
+}
